@@ -1,4 +1,4 @@
-﻿namespace Business.Core.Interfaces;
+﻿namespace Business.Core.Models.Interfaces;
 
 /// <summary>
 /// Интерфейс любой сущности в контексте данной библиотеки

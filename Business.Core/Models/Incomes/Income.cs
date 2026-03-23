@@ -1,6 +1,6 @@
-﻿using Business.Core.Interfaces;
+﻿using Business.Core.Models.Interfaces;
 
-namespace Business.Core.Incomes;
+namespace Business.Core.Models.Incomes;
 
 /// <summary>
 /// Класс для хранения информации об одном доходе
@@ -9,15 +9,12 @@ public record Income: IEntity
 {
     public Guid Id { get; init; }
     public decimal Amount { get; set; }
-    public IncomeType Type { get; set; }
     public PayerType Payer { get; set; }
     public DateTime Date { get; set; }
     public string Description { get; set; }
-    public (int Year, int Month) YearMonth => (Date.Year, Date.Month);
     
     public Income(
         decimal amount,
-        IncomeType type,
         PayerType payer,
         DateTime date,
         string description)
@@ -27,7 +24,6 @@ public record Income: IEntity
 
         Id = Guid.CreateVersion7();
         Amount = amount;
-        Type = type;
         Payer = payer;
         Date = date;
         Description = description;

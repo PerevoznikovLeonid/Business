@@ -1,4 +1,4 @@
-﻿namespace Business.Core.Incomes;
+﻿namespace Business.Core.Models.Incomes;
 
 /// <summary>
 /// Перечисление типов плательщиков

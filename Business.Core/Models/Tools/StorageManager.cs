@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-using Business.Core.Interfaces;
+using Business.Core.Models.Interfaces;
 
 namespace Business.Core.Models.Tools;
 

@@ -1,5 +1,5 @@
-﻿using Business.Core.Incomes;
-using Business.Core.Interfaces;
+﻿using Business.Core.Models.Incomes;
+using Business.Core.Models.Interfaces;
 using Business.Core.Models.Tools;
 
 namespace Business.Core.Models.Repositories;
@@ -7,7 +7,7 @@ namespace Business.Core.Models.Repositories;
 /// <summary>
 /// Класс Json репозитория для доходов
 /// </summary>
-public class IncomeJsonRepository : IJsonRepository<Income>
+public class IncomeJsonRepository : IIncomeJsonRepository<Income>
 {
     private readonly string _filePath;
     private readonly List<Income> _incomes;
@@ -48,7 +48,6 @@ public class IncomeJsonRepository : IJsonRepository<Income>
             throw new KeyNotFoundException("Income not found");
         
         toUpdate.Amount = entity.Amount;
-        toUpdate.Type = entity.Type;
         toUpdate.Payer = entity.Payer;
         toUpdate.Date = entity.Date;
         toUpdate.Description = entity.Description;

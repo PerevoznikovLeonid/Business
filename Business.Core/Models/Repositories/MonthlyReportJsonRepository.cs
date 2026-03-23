@@ -47,7 +47,6 @@ public class MonthlyReportJsonRepository
         public MonthlyReport GetReportForPeriod(DateTime start, DateTime end)
         {
             var entries = _incomeRepository.ReadByDateRange(start, end).ToList();
-            // Для периода используем месяц и год начала периода для отображения
             return BuildReport(start.Year, start.Month, entries);
         }
 

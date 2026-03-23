@@ -4,15 +4,20 @@ using Business.Core.Models.Repositories;
 
 namespace Business.Core.Models;
 
+/// <summary>
+/// Класс для упрощенной работы с методами доходов, аналитики и репозиториев
+/// </summary>
 public class SelfEmployed
 {
     private const decimal IndividualTaxRate = 0.04M;
     private const decimal LegalEntityTaxRate = 0.06M;
     private readonly IncomeJsonRepository _incomeRepo;
+    private readonly MonthlyReportJsonRepository _monthlyReportRepo;
     
-    public SelfEmployed(IncomeJsonRepository repository)
+    public SelfEmployed(IncomeJsonRepository repository, MonthlyReportJsonRepository monthlyReportRepo)
     {
         _incomeRepo = repository ?? throw new ArgumentNullException(nameof(repository));
+        _monthlyReportRepo = monthlyReportRepo ?? throw new ArgumentNullException(nameof(monthlyReportRepo));
     }
     
     public Income AddIncome(
@@ -75,5 +80,25 @@ public class SelfEmployed
             Console.WriteLine(ex.Message);
             throw;
         }
+    }
+    
+    public MonthlyReport GetMonthlyReport(int year, int month)
+    {
+        return _monthlyReportRepo.GetMonthlyReport(year, month);
+    }
+
+    public IEnumerable<MonthlyReport> GetAllMonthlyReports()
+    {
+        return _monthlyReportRepo.GetAllMonthlyReports();
+    }
+
+    public decimal TotalIncomeAllTime()
+    {
+        return _monthlyReportRepo.GetTotalIncome();
+    }
+
+    public MonthlyReport GetReportForPeriod(DateTime start, DateTime end)
+    {
+        return _monthlyReportRepo.GetReportForPeriod(start, end);
     }
 }

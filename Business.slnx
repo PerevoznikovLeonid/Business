@@ -7,4 +7,5 @@
     <File Path=".editorconfig" />
     <File Path="README" />
   </Folder>
+  <Project Path="Business.Core\Business.Core.csproj" Type="Classic C#" />
 </Solution>
